@@ -2,7 +2,7 @@
   "Id": "SuperBots",
   "DisplayName": "SuperBots",
   "Author": "captncraig",
-  "Version": "1.0.0",
+  "Version": "1.0.1",
   "AssemblyName": "SuperBots.dll",
   "EntryMethod": "SuperBots.Main.Load"
 }

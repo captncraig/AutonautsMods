@@ -13,10 +13,10 @@ namespace SuperBots
         {
             mod = modEntry;
             var harmony = HarmonyInstance.Create(modEntry.Info.Id);
+
             harmony.Patch(
-                original: AccessTools.Method(typeof(TeachWorkerScriptEdit),
-                                            nameof(TeachWorkerScriptEdit.GetFreeMemory)),
-                postfix: new HarmonyMethod(typeof(Main), nameof(GetFreeMemory))
+                original: AccessTools.Method(typeof(Worker),"InitStats"),
+                postfix: new HarmonyMethod(typeof(Main), nameof(Main.InitStats))
                 );
 
             Type type = typeof(Worker);
@@ -27,9 +27,18 @@ namespace SuperBots
         }
 
         [HarmonyPostfix]
-        static void GetFreeMemory(ref int __result)
+        static void InitStats()
         {
-            __result = 100;
+            Worker.m_AllHeadInfo[0].m_MaxInstructions = 64;
+            Worker.m_AllHeadInfo[1].m_MaxInstructions = 256;
+            Worker.m_AllHeadInfo[2].m_MaxInstructions = 1024;
+            Worker.m_AllHeadInfo[0].m_FindNearestRange = 25;
+            Worker.m_AllHeadInfo[1].m_FindNearestRange = 50;
+            Worker.m_AllHeadInfo[2].m_FindNearestRange = 75;
+            Worker.m_AllHeadInfo[0].m_FindNearestDelay = 20;
+            Worker.m_AllHeadInfo[1].m_FindNearestDelay = 15;
+            Worker.m_AllHeadInfo[2].m_FindNearestDelay = 10;
         }
+
     }
 }

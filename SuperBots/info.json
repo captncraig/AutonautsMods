@@ -1,0 +1,8 @@
+﻿{
+  "Id": "SuperBots",
+  "DisplayName": "SuperBots",
+  "Author": "captncraig",
+  "Version": "1.0.0",
+  "AssemblyName": "SuperBots.dll",
+  "EntryMethod": "SuperBots.Main.Load"
+}
